@@ -5,11 +5,63 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
+var articalone={
+    title:'artical one| naveen',
+    heading:'artical one',
+    date:'sep 5, 2016',
+    content: `<p>
+                        NEW DELHI: Ramping up its offensive against Pakistan after the terror attack at Uri, India said PM Narendra Modi will not travel to Islamabad+ for the Saarc summit due to increasing cross border attacks creating an atmosphere that is not conducive for ...
+                        </p>
+                        <p>
+                            NEW DELHI: Ramping up its offensive against Pakistan after the terror attack at Uri, India said PM Narendra Modi will not travel to Islamabad+ for the Saarc summit due to increasing cross border attacks creating an atmosphere that is not conducive for ...
+                            </p>
+                            <p>
+                                NEW DELHI: Ramping up its offensive against Pakistan after the terror attack at Uri, India said PM Narendra Modi will not travel to Islamabad+ for the Saarc summit due to increasing cross border attacks creating an atmosphere that is not conducive for ...
+                                </p>`
+}
+
+function createTemplate(data){
+var title=data.title;
+var heading=data.heading;
+var date=data.date;
+var content=datacontent;
+var htmlTemplate=`
+<html>
+    <head>
+        <title>
+            ${title}
+            </title>
+            <meta name="viewpoint" content="width-device-width,initial-scale=1"/>
+             <link href="/ui/style.css" rel="stylesheet" />
+       
+        </head>
+        <body>
+            <div class="container">
+                <div>
+                <d href="/">home</d>
+                </div>
+                <hr/>
+                <h3>${heading}</h3>
+                <div> ${date}</div>
+                <div>
+                   ${content}
+                    </div>
+                    </div>
+            </body>
+</html>
+`;
+return htmlTemplate;
+}
+
+
+
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 app.get('/artical-one', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'artical-one.html'));
+  res.send(createartical(htmlTemplate));
+  //res.sendFile(path.join(__dirname, 'ui', 'artical-one.html'));
 });
 app.get('/artical-two', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'artical-two.html'));
