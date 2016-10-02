@@ -5,7 +5,8 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var articalone={
+var articals={ 
+'artical-one':{
     title:'artical one| naveen',
     heading:'artical one',
     date:'sep 5, 2016',
@@ -18,6 +19,30 @@ var articalone={
                             <p>
                                 NEW DELHI: Ramping up its offensive against Pakistan after the terror attack at Uri, India said PM Narendra Modi will not travel to Islamabad+ for the Saarc summit due to increasing cross border attacks creating an atmosphere that is not conducive for ...
                                 </p>`
+},
+'artical-two':{
+    title:'artical two| naveen',
+    heading:'artical two',
+    date:'sep 5, 2016',
+    content: `<p>
+                        NEW DELHI: Ramping up its offensive against Pakistan after the terror attack at Uri, India said PM Narendra Modi will not travel to Islamabad+ for the Saarc summit due to increasing cross border attacks creating an atmosphere that is not conducive for ...
+                        </p>
+                        <p>
+                            NEW DELHI: Ramping up its offensive against Pakistan after the terror attack at Uri, India said PM Narendra Modi will not travel to Islamabad+ for the Saarc summit due to increasing cross border attacks creating an atmosphere that is not conducive for ...
+                            </p>
+                            <p>
+                                NEW DELHI: Ramping up its offensive against Pakistan after the terror attack at Uri, India said PM Narendra Modi will not travel to Islamabad+ for the Saarc summit due to increasing cross border attacks creating an atmosphere that is not conducive for ...
+                                </p>`},
+'artical-three':{
+    title:'artical three| naveen',
+    heading:'artical three',
+    date:'sep 5, 2016',
+    content: `<p>
+                        NEW DELHI: Ramping up its offensive against Pakistan after the terror attack at Uri, India said PM Narendra Modi will not travel to Islamabad+ for the Saarc summit due to increasing cross border attacks creating an atmosphere that is not conducive for ...
+                        </p>`
+    
+}
+    
 }
 
 function createTemplate(data){
@@ -59,8 +84,9 @@ return htmlTemplate;
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
-app.get('/artical-one', function (req, res) {
-  res.send(createTemplate(articalone));
+app.get('/:articalname', function (req, res) {
+    var articalname=req.params.articalname;
+  res.send(createTemplate(articals(articalnames)));
   
 });
 app.get('/artical-two', function (req, res) {
